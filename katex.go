@@ -31,9 +31,9 @@ func Render(w io.Writer, src []byte, display bool) error {
 
 	globals.Set("_EqSrc3120", context.String(string(src)))
 	if display {
-		result, err = context.Eval("katex.renderToString(_EqSrc3120, { displayMode: true })")
+		result, err = context.Eval("katex.renderToString(_EqSrc3120, { displayMode: true, strict: false, trust: true })")
 	} else {
-		result, err = context.Eval("katex.renderToString(_EqSrc3120)")
+		result, err = context.Eval("katex.renderToString(_EqSrc3120, { strict: false, trust: true })")
 	}
 	defer result.Free()
 
